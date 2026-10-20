@@ -1,0 +1,25 @@
+NHATANH CHINESE — MƯA CHỮ HÁN
+
+1. mua-chu-han-dien-thoai.html: giao diện điện thoại, bàn phím cảm ứng trong game.
+2. mua-chu-han-may-tinh.html: giao diện máy tính, Enter để gửi đáp án, Esc để tạm dừng.
+
+Mỗi HTML đã chứa sẵn ảnh nền, hai nhân vật và logo. Không cần thư mục ảnh đi kèm để chạy game.
+Nếu đang mở bản cũ, tải lại trang sau khi lưu tệp mới.
+
+Nút Máy tính / Điện thoại có ở đầu trang, trong hàng điều khiển khi chơi và màn hình tạm dừng. Chuyển ngay trong cùng trang, giữ nguyên bộ từ, điểm số, mạng, lượt chơi và nội dung đang gõ. Giao diện đã chọn được ghi nhớ cho lần mở tiếp theo của từng tệp.
+
+Trong mục Từ vựng có thể thêm, sửa, xóa, dán danh sách và tải danh sách từ. Bộ từ lưu trên trình duyệt đang dùng.
+Nhịp người mới: 32 giây mỗi từ, từ mới cách 9 giây, tối đa 2 từ cùng lúc. Chấp nhận pinyin hoặc chữ Hán.
+
+Thư mục assets-nhatanh chứa PNG gốc, WebP tối ưu và prompts.md. Nền và hai nhân vật được tạo bằng imagegen tích hợp. Logo gốc do người dùng cung cấp và được giữ nguyên thiết kế.
+
+Kiểm tra: trình duyệt Chrome với 8 bố cục; nhập đáp án, hiệu ứng bắn, tạm dừng và quản lý từ trong chế độ ngoại tuyến. Chưa kiểm tra trên thiết bị điện thoại vật lý.
+
+LƯU BỘ TỪ LÂU DÀI
+- Sau mỗi lần thêm/sửa/xóa/nhập danh sách, game tự lưu trên trình duyệt đang dùng.
+- Vào Từ vựng > Lưu game kèm bộ từ để tải một HTML chứa toàn bộ bộ từ hiện tại. Mở tệp này để dùng lại kể cả trên trình duyệt khác hoặc sau khi xóa dữ liệu trình duyệt.
+- Sau khi thay đổi thêm từ, bấm Lưu game kèm bộ từ lần nữa để cập nhật bản sao. Giữ lại tệp tải về trên máy hoặc sao chép sang thiết bị khác.
+- Tải danh sách từ vẫn xuất bảng TSV riêng nếu chỉ muốn lưu danh sách.
+
+KHUNG LUYỆN TẬP LỚN
+- Chế độ máy tính có khung luyện tập rộng hơn, ô nhập và chữ đáp án lớn hơn, các nút dễ nhìn và dễ bấm hơn. Bố cục tự sắp xếp khi màn hình hẹp.
