@@ -395,6 +395,54 @@ html[data-edition=desktop] .console .game-actions{grid-template-columns:repeat(3
 html[data-edition=desktop] .console .keyboard{gap:8px}
 }
 
+/* Keep the whole playfield and answer controls above the phone's IME. */
+html[data-native-entry],html[data-native-entry] body{overflow:hidden;overscroll-behavior:none}
+html[data-native-entry] body.playing .app{position:fixed;top:var(--ime-top,0px);left:var(--ime-left,0px);width:var(--ime-width,100%);height:var(--ime-height,100dvh);max-width:none;margin:0;padding:6px max(8px,env(safe-area-inset-right)) 6px max(8px,env(safe-area-inset-left));display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:34px minmax(0,1fr) auto 44px;gap:6px;align-items:stretch;z-index:10;background:var(--bg)}
+html[data-native-entry] .app>.masthead,html[data-native-entry] .app>.title-row,
+html[data-native-entry] .desktop-side-heading,html[data-native-entry] .desktop-bank-panel,
+html[data-native-entry] .desktop-tips,html[data-native-entry] .desktop-bottom,
+html[data-native-entry] .intro-note{display:none!important}
+html[data-native-entry] .desktop-side,html[data-native-entry] .console{display:contents!important}
+html[data-native-entry] .app>.stats{grid-column:1;grid-row:1;margin:0;gap:8px}
+html[data-native-entry] .stat{min-height:0;padding:3px 8px;border-width:2px;border-radius:10px;display:flex;align-items:center;justify-content:space-between;gap:4px}
+html[data-native-entry] .stat small{font-size:9px;letter-spacing:0;white-space:nowrap}
+html[data-native-entry] .stat strong{font-size:18px;line-height:1}
+html[data-native-entry] .hearts{margin:0;gap:2px}
+html[data-native-entry] .hearts svg{width:14px;height:16px}
+html[data-native-entry] .app>.arena-wrap{grid-column:1;grid-row:2;min-height:0;margin:0}
+html[data-native-entry] body.playing .arena{height:100%;min-height:0;border-width:3px;border-radius:18px;box-shadow:0 3px 0 #603e27}
+html[data-native-entry] .arena-top{top:6px;left:8px;right:8px}
+html[data-native-entry] .mode-tag,html[data-native-entry] .combo{font-size:9px;padding:3px 6px}
+html[data-native-entry] .danger-line{bottom:46px;left:8px;right:8px;padding-top:1px;font-size:7px}
+html[data-native-entry] .shooter{height:54px;width:60px;bottom:-4px}
+html[data-native-entry] .mascot{height:75px;width:65px}
+html[data-native-entry] .arena-brand,html[data-native-entry] .defender-label{display:none}
+html[data-native-entry] .console .answer-bar{grid-column:1;grid-row:3;min-width:0;padding:6px 8px;border-radius:14px;box-shadow:0 2px 0 #754728}
+html[data-native-entry] .console .answer-label{display:none}
+html[data-native-entry] .console .entry-row{gap:8px}
+html[data-native-entry] .console #answer{height:44px;min-height:44px;font-size:21px;padding:6px 10px;border-radius:10px;letter-spacing:.3px}
+html[data-native-entry] #answer::placeholder{font-size:14px}
+html[data-native-entry] .console .submit{min-height:44px;height:44px;width:64px;font-size:14px;line-height:1;flex-direction:row;gap:4px;padding:4px;border-radius:10px}
+html[data-native-entry] .console .submit svg{width:18px;height:18px;margin:0}
+html[data-native-entry] .console .feedback{font-size:11px;line-height:16px;min-height:16px;margin:4px 0 0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+html[data-native-entry] .console .keyboard{display:none!important}
+html[data-native-entry] .console .game-actions{grid-column:1;grid-row:4;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin:0;min-height:0}
+html[data-native-entry] .console .game-actions .secondary,
+html[data-native-entry] .console .game-actions #native-toggle{min-height:44px;height:44px;min-width:0;padding:3px 2px;gap:2px;font-size:10px;line-height:1.15;flex-direction:column;border-radius:9px}
+html[data-native-entry] .console .game-actions svg{width:16px;height:16px}
+html[data-native-entry] .console .game-actions .layout-switch-text{font-size:10px;line-height:1.15}
+html[data-native-entry][data-ime-short] body.playing .app{grid-template-rows:minmax(0,1fr) auto 44px;padding-top:4px;padding-bottom:4px;gap:4px}
+html[data-native-entry][data-ime-short] .app>.stats{display:none}
+html[data-native-entry][data-ime-short] .app>.arena-wrap{grid-row:1}
+html[data-native-entry][data-ime-short] .console .answer-bar{grid-row:2;padding:4px 6px}
+html[data-native-entry][data-ime-short] .console .game-actions{grid-row:3}
+html[data-native-entry][data-ime-short] .danger-line{bottom:34px}
+html[data-native-entry][data-ime-short] .shooter{height:42px;width:47px}
+html[data-native-entry][data-ime-wide] body.playing .app{grid-template-columns:minmax(0,1fr) minmax(280px,.8fr);grid-template-rows:minmax(0,1fr) 44px;gap:6px 10px}
+html[data-native-entry][data-ime-wide] .app>.arena-wrap{grid-column:1;grid-row:1/3}
+html[data-native-entry][data-ime-wide] .console .answer-bar{grid-column:2;grid-row:1;align-self:center}
+html[data-native-entry][data-ime-wide] .console .game-actions{grid-column:2;grid-row:2}
+
 </style>
 </head>
 <body>
@@ -501,7 +549,45 @@ document.documentElement.dataset.theme=storage.get('hanzi-rain-theme','light')==
 function updateTheme(){const dark=document.documentElement.dataset.theme==='dark';$('theme-btn').setAttribute('aria-label',dark?'Bật giao diện sáng':'Bật giao diện tối');$('theme-btn').setAttribute('aria-pressed',String(dark));document.querySelector('meta[name=theme-color]').content=dark?'#263d3d':'#f8edcd'}
 updateTheme();
 $('theme-btn').onclick=()=>{document.documentElement.dataset.theme=document.documentElement.dataset.theme==='dark'?'light':'dark';storage.set('hanzi-rain-theme',document.documentElement.dataset.theme);updateTheme()};
-function setBodyState(next){state=next;document.body.className=next;const disabled=state!=='playing';input.disabled=disabled;document.querySelectorAll('.console button').forEach(b=>b.disabled=disabled)}
+// Safari and Android may shrink only the visual viewport when an IME opens.
+// Fit the live game to that rectangle, including the Chinese candidate row.
+let nativeViewportFrame=0;
+function syncNativeViewport(){
+ const root=document.documentElement,vv=window.visualViewport;
+ const phone=root.dataset.edition==='mobile'||(matchMedia('(pointer:coarse)').matches&&root.clientWidth<=900);
+ const editing=phone&&nativeKeyboard&&state==='playing'&&document.activeElement===input;
+ root.toggleAttribute('data-native-entry',editing);
+ if(!editing){
+  root.removeAttribute('data-ime-short');root.removeAttribute('data-ime-wide');
+  ['--ime-top','--ime-left','--ime-width','--ime-height'].forEach(name=>root.style.removeProperty(name));
+  return;
+ }
+ const height=vv?.height||window.innerHeight,width=vv?.width||window.innerWidth;
+ root.toggleAttribute('data-ime-short',height<350);
+ root.toggleAttribute('data-ime-wide',width>=600&&height<350);
+ root.style.setProperty('--ime-height',height+'px');
+ root.style.setProperty('--ime-width',width+'px');
+ root.style.setProperty('--ime-top',(vv?.offsetTop||0)+'px');
+ root.style.setProperty('--ime-left',(vv?.offsetLeft||0)+'px');
+ measure();
+}
+function scheduleNativeViewport(){
+ if(nativeViewportFrame)return;
+ nativeViewportFrame=requestAnimationFrame(()=>{nativeViewportFrame=0;syncNativeViewport()});
+}
+input.addEventListener('focus',syncNativeViewport);
+input.addEventListener('blur',syncNativeViewport);
+input.addEventListener('pointerdown',scheduleNativeViewport);
+window.addEventListener('resize',scheduleNativeViewport,{passive:true});
+window.addEventListener('orientationchange',scheduleNativeViewport,{passive:true});
+window.visualViewport?.addEventListener('resize',scheduleNativeViewport,{passive:true});
+window.visualViewport?.addEventListener('scroll',scheduleNativeViewport,{passive:true});
+// Keep controls in place until their click; their own actions can blur as needed.
+document.querySelectorAll('.console button').forEach(button=>button.addEventListener('pointerdown',event=>{
+ if(document.documentElement.hasAttribute('data-native-entry')&&document.activeElement===input)event.preventDefault();
+}));
+
+function setBodyState(next){state=next;document.body.className=next;const disabled=state!=='playing';input.disabled=disabled;document.querySelectorAll('.console button').forEach(b=>b.disabled=disabled);scheduleNativeViewport()}
 function feedback(text,type=''){feedbackTime=performance.now();$('feedback').textContent=text;$('feedback').className='feedback '+type}
 function renderStats(){
  $('timer').closest('.stat').style.setProperty('--time-fill',Math.max(0,remaining/120));
@@ -517,7 +603,7 @@ function shuffle(arr){for(let i=arr.length-1;i>0;i--){const j=Math.floor(Math.ra
 function nextWord(){if(!bag.length)bag=shuffle([...pool]);return bag.pop()}
 function measure(){arenaWidth=arena.clientWidth;arenaHeight=arena.clientHeight;active.forEach(w=>positionWord(w));shots.forEach(shot=>{positionWord(shot.w);aimShot(shot);drawShot(shot)})}
 new ResizeObserver(measure).observe(arena);
-function wordY(w){const desktop=document.documentElement.dataset.edition==='desktop',top=desktop?56:46,floor=desktop?110:66;return top+w.progress*Math.max(8,arenaHeight-floor-top-(w.hinted?79:63))}
+function wordY(w){const compact=document.documentElement.hasAttribute('data-native-entry'),short=document.documentElement.hasAttribute('data-ime-short'),desktop=document.documentElement.dataset.edition==='desktop',top=compact?(short?24:36):desktop?56:46,floor=compact?(short?38:50):desktop?110:66;return top+w.progress*Math.max(8,arenaHeight-floor-top-(w.hinted?79:63))}
 function positionWord(w){const x=14+w.lane*((arenaWidth-28)/3),y=wordY(w);w.el.style.transform=`translate3d(${x}px,${y}px,0)`;w.el.style.setProperty('--x',x+'px');w.el.style.setProperty('--y',y+'px')}
 function spawn(){
  if(active.length+shots.length>=MAX_FALLING_WORDS)return;
@@ -714,6 +800,8 @@ function downloadGameWithVocabulary(){
  copy.dataset.bankId='bank-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,10);
  copy.dataset.defaultEdition=mode;copy.dataset.edition=mode;
  copy.querySelector('body').className='idle';
+ copy.removeAttribute('data-native-entry');copy.removeAttribute('data-ime-short');copy.removeAttribute('data-ime-wide');
+ ['--ime-top','--ime-left','--ime-width','--ime-height'].forEach(name=>copy.style.removeProperty(name));
  copy.querySelectorAll('dialog').forEach(dialog=>{dialog.removeAttribute('open');delete dialog.dataset.resume});
  copy.querySelector('#start-scene').removeAttribute('hidden');
  ['words','shot-layer','vocab-list','import-rows'].forEach(id=>copy.querySelector('#'+id).replaceChildren());
@@ -759,7 +847,7 @@ function applyLayout(mode,{save=true}={}){
  document.documentElement.dataset.edition=mode;
  document.title='Mưa chữ Hán · '+(mode==='desktop'?'Máy tính':'Điện thoại')+' · NHATANH CHINESE';
  document.querySelector('.title-row p').textContent=mode==='desktop'?'Một cơn mưa nhỏ, thêm nhiều từ mới. Cùng Aqua luyện phản xạ tiếng Trung.':'Một cơn mưa nhỏ, thêm nhiều từ mới.';
- updateInputLayout();
+ updateInputLayout();syncNativeViewport();
  const label=mode==='desktop'?'Điện thoại':'Máy tính';
  document.querySelectorAll('[data-toggle-layout]').forEach(button=>{
   const description='Chuyển sang giao diện '+label.toLowerCase();
@@ -782,6 +870,7 @@ $('native-toggle').onclick=()=>{
   $('native-toggle').textContent=nativeKeyboard?'Bàn phím game':'Bàn phím máy';
   $('native-toggle').setAttribute('aria-pressed',String(nativeKeyboard));
   if(nativeKeyboard)input.focus({preventScroll:true});else input.blur();
+  syncNativeViewport();
  }
 };
 document.querySelectorAll('[data-toggle-layout]').forEach(button=>button.onclick=()=>applyLayout(document.documentElement.dataset.edition==='desktop'?'mobile':'desktop'));

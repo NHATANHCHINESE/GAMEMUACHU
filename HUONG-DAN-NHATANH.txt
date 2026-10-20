@@ -23,3 +23,15 @@ LƯU BỘ TỪ LÂU DÀI
 
 KHUNG LUYỆN TẬP LỚN
 - Chế độ máy tính có khung luyện tập rộng hơn, ô nhập và chữ đáp án lớn hơn, các nút dễ nhìn và dễ bấm hơn. Bố cục tự sắp xếp khi màn hình hẹp.
+
+ĐƯA LÊN GITHUB PAGES
+- Tệp index.html chứa game đầy đủ với cả chế độ máy tính và điện thoại.
+- Đưa index.html vào thư mục gốc của nguồn xuất bản. Nếu Pages chọn main / (root), đặt trực tiếp trong kho; nếu chọn /docs thì đặt trong docs.
+- Không đặt tệp trong thư mục outputs nếu muốn mở game ngay tại đường link chính.
+- Kho GAMEMUACHU hiện đã có Pages hoạt động; chỉ cần bổ sung index.html để đường link https://nhatanhchinese.github.io/GAMEMUACHU/ mở game.
+
+NHẬP CHỮ HÁN TRÊN ĐIỆN THOẠI
+- Trong chế độ điện thoại, chọn Bàn phím máy để dùng bộ gõ chữ Hán của điện thoại.
+- Vùng chơi và ô trả lời tự co theo phần màn hình phía trên bàn phím, kể cả thanh chọn chữ. Nút Bàn phím game đưa về bàn phím pinyin trong game.
+- Đã kiểm tra bằng Chrome mô phỏng điện thoại với bàn phím thu nhỏ vùng nhìn, cuộn vùng nhìn, xoay ngang, gửi đáp án và tạm dừng; chưa thử trực tiếp trên điện thoại vật lý.
+- Để cập nhật bản online, thay index.html trong nguồn xuất bản của GitHub Pages bằng bản mới.
